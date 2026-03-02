@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TSL_1000V Manual Gateway</title>
+    <style>
+        :root {
+            --tesla-blue: #0057ff;
+            --danger-red: #d32f2f;
+            --bg-dark: #121212;
+            --card-bg: #1e1e1e;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: var(--bg-dark);
+            color: white;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .header h1 { margin: 10px 0; font-size: 1.5rem; color: var(--tesla-blue); }
+        .header p { font-size: 0.9rem; color: #aaa; }
+
+        /* 安全警告弹窗 */
+        #safety-modal {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.9);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        .modal-content {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 12px;
+            max-width: 90%;
+            text-align: center;
+            border: 2px solid var(--danger-red);
+        }
+        .btn-confirm {
+            background: var(--danger-red);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 6px;
+            font-weight: bold;
+            margin-top: 20px;
+            cursor: pointer;
+        }
+
+        /* 列表设计 */
+        .manual-list {
+            width: 100%;
+            max-width: 500px;
+        }
+        .manual-item {
+            background: var(--card-bg);
+            margin-bottom: 15px;
+            padding: 20px;
+            border-radius: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-left: 4px solid var(--tesla-blue);
+            transition: transform 0.2s;
+            text-decoration: none;
+            color: white;
+        }
+        .manual-item:active { transform: scale(0.98); }
+        .lang-info h3 { margin: 0; font-size: 1.1rem; }
+        .lang-info span { font-size: 0.8rem; color: #888; }
+        .download-icon { font-size: 1.5rem; }
+
+        .footer { margin-top: auto; padding: 40px 0; color: #555; font-size: 0.8rem; }
+    </style>
+</head>
+<body>
+
+    <div id="safety-modal">
+        <div class="modal-content">
+            <h2 style="color: var(--danger-red);">DANGER / 危险</h2>
+            <p>本设备涉及 1000V 高压操作。请确认您已阅读安全规程并具备相关操作资质。</p>
+            <p style="font-size: 0.8rem; color: #888;">This device involves 1000V high-voltage operation. Please ensure you are a certified technician.</p>
+            <button class="btn-confirm" onclick="closeModal()">我已确认 | I CONFIRM</button>
+        </div>
+    </div>
+
+    <div class="header">
+        <h1>TSL_1000V Discharger</h1>
+        <p>User Interface & Operation Manuals</p>
+    </div>
+
+    <div class="manual-list">
+        <a href="manual_cn_v1.9.pdf" class="manual-item">
+            <div class="lang-info">
+                <h3>简体中文 (Standard)</h3>
+                <span>Version: V1.9_0206</span>
+            </div>
+            <div class="download-icon">🇨🇳</div>
+        </a>
+
+        <a href="manual_en_v1.9.pdf" class="manual-item">
+            <div class="lang-info">
+                <h3>English (International)</h3>
+                <span>Version: V1.9_0206</span>
+            </div>
+            <div class="download-icon">🇺🇸</div>
+        </a>
+
+        <a href="manual_de_v1.8.pdf" class="manual-item">
+            <div class="lang-info">
+                <h3>Deutsch (Germany)</h3>
+                <span>Version: V1.8_1215</span>
+            </div>
+            <div class="download-icon">🇩🇪</div>
+        </a>
+    </div>
+
+    <div class="footer">
+        © 2024 TESLA HV Solutions | Support: support@example.com
+    </div>
+
+    <script>
+        function closeModal() {
+            document.getElementById('safety-modal').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
